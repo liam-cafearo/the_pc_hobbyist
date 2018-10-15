@@ -26,10 +26,10 @@ def register(request):
                 messages.error(
                     request, "Sorry, we are unable to log you in at this time, please try again later.")
 
-        else:
-            form = UserRegistrationForm()
+    else:
+        form = UserRegistrationForm()
 
-        args = {'form': form}
-        args.update(csrf(request))
+    args = {'form': form}
+    args.update(csrf(request))
 
-        return render(request, 'register.html', args)
+    return render(request, 'register.html', args)
