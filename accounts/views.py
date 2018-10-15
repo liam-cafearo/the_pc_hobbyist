@@ -34,7 +34,8 @@ def register(request):
 
     return render(request, 'register.html', args)
 
-
+from django.contrib.auth.decorators import login_required
+@login_required(login_url='/login/')
 def profile(request):
     return render(request, 'profile.html')
 
