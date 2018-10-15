@@ -21,5 +21,8 @@ from accounts import views as accounts_views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', home_views.get_index, name="index"),
+
+    # Accounts views
     url(r'^register/$', accounts_views.register, name='register'),
+    url(r'^profile/$', accounts_views.profile, name='profile'),
 ]
