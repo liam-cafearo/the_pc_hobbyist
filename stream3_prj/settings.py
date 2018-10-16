@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-DISQUS_WEBSITE_SHORTNAME = 'pchobbyistblog'
+DISQUS_WEBSITE_SHORTNAME = 'tpchblog'
 SITE_ID = 4
 
 # Application definition
