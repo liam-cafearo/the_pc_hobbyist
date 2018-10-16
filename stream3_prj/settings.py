@@ -25,9 +25,10 @@ SECRET_KEY = '#u+m7a-79j61#+8f505^07m=34d_3c=x7#y7$t7%)wi6o_jyej'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
-DISQUS_WEBSITE_SHORTNAME = 'tpchblog'
+DISQUS_API_KEY = 'wu9qhvYBAn9nWquS1jTOxjgpb8P43gYWkmvfsHpC6lMJEIwnZkNNrIdr5nhWOZ46'
+DISQUS_WEBSITE_SHORTNAME = 'pchobbyistblog'
 SITE_ID = 4
 
 # Application definition
@@ -94,7 +95,7 @@ AUTH_USER_MODEL = 'accounts.User'
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
-    'accounts.backends.EmailAuth'
+    'accounts.backends.EmailAuth',
 )
 
 
