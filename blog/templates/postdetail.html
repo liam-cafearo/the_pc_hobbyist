@@ -13,7 +13,7 @@
 <div class="row">
     <div class="col-md-2 col-sm-3 text-center">
         <a class="story-img" href="#">
-            <img src="https://placehold.it/100" style="width:100px; height: 100px; background-colour: #12ABB2; color: #ffffff;"
+            <img src="https://placehold.it/100" style="width:100px; height: 100px; background-color: #12ABB2; color: #ffffff;"
                 class="img-circle">
         </a>
     </div>
@@ -22,8 +22,8 @@
         <div class="row">
             <div class="col-xs-9">
                 <p>{{ post.content }}</p>
-                <p><button class="btn btn-default">Back to blog</button></p>
-                <p>{{ post.published_date }}</p>
+                <p><button class="btn btn-default" onclick="location.href='/blog'">Back to blog</button></p>
+                <p>{{ post.published_date }} | Views {{ post.views }}</p>
             </div>
         </div>
     </div>
