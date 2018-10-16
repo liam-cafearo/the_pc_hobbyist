@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+DISQUS_WEBSITE_SHORTNAME = 'pchobbyistblog'
 SITE_ID = 4
 
 # Application definition
@@ -44,6 +45,7 @@ INSTALLED_APPS = [
     'accounts',
     'django_forms_bootstrap',
     'blog',
+    'disqus',
 ]
 
 MIDDLEWARE = [
