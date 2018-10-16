@@ -9,6 +9,7 @@
     <meta name="author" content="Liam Cafearo">
     <title>The PC Hobbyist</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.6/cerulean/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/blog.css' %}">
 </head>
 
 <body>
@@ -55,8 +56,16 @@
     {% endif %}
 
     <div class="container">
-        {% block content %}
-        {% endblock %}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel">
+                    <div class="panel-body">
+                        {% block content %}
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <hr>
     <div class="footer">
