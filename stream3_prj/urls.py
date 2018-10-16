@@ -15,12 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from home import views as home_views
 
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'', include('home.urls')),
-    url(r'^blog/', include('blog.urls')),
+    url(r'', include('blog.urls')),
+    url(r'^$', home_views.get_index, name="index"),
     url(r'^accounts/', include('accounts.urls')),
 
     # Flatpages
