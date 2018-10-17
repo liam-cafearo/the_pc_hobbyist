@@ -19,6 +19,8 @@ class Post(models.Model):
     views = models.IntegerField(default=0) # number of post views.
     tag = models.CharField(max_length=30, blank=True, null=True) # category field.
 
+    image = models.ImageField(upload_to="images", blank=True, null=True)
+
     def publish(self):
         self.published_date = timezone.now()
         self.save()

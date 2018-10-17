@@ -12,20 +12,22 @@
 </div>
 <div class="row">
     <div class="col-md-2 col-sm-3 text-center">
-        <a class="story-img" href="#">
-            <img src="https://placehold.it/100" style="width:100px; height: 100px; background-color: #12ABB2; color: #ffffff;"
-                class="img-circle">
-        </a>
+        <img src="https://placehold.it/100" style="width:100px; height: 100px; background-color: #12ABB2; color: #ffffff;"
+            class="img-circle">
     </div>
     <div class="col-md-10 col-sm-9">
         <h2>{{ post.title }}</h2>
+        <p>{{ post.published_date }} | <strong>Views:</strong> {{ post.views }} | <strong>Tags:</strong> {{ post.tag }}</p>
         <div class="row">
             <div class="col-xs-9">
+                {% if post.image %}
+                <img src="/media/{{ post.image }}" class="img-responsive"">
+                {% endif %}
                 <p>{{ post.content }}</p>
-                <p><button class="btn btn-default" onclick="location.href='/blog'">Back to blog</button></p>
-                <p>{{ post.published_date }} | <strong>Views:</strong> {{ post.views }} | <strong>Tags:</strong> {{
-                    post.tag }}</p>
+                <button class="btn btn-default" onclick="location.href='/blog'">Back to blog</button>
+                <button class="btn btn-default" onclick="location.href='{% url 'edit' post.id %}'">Edit Post</button>
                 {% load disqus_tags %}
+                <!-- May need to remove this line -->
                 {% set_disqus_developer 1 %}
                 {% set_disqus_title post.title %}
                 {% disqus_show_comments %}
