@@ -14,11 +14,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
+from django.conf import settings
 from django.contrib import admin
 from home import views as home_views
 from .settings import MEDIA_ROOT
 from django.views.static import serve
 
+# Django-Debug-Toolbar
+    if settings.DEBUG:
+        import debug_toolbar
+        urlpatterns.append(url(r'^debug/', include(debug_toolbar.urls)))
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
@@ -31,4 +36,5 @@ urlpatterns = [
 
     # Images
     url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
+
 ]
