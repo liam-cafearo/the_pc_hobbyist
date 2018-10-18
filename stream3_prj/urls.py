@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'', include('blog.urls')),
     url(r'^$', home_views.get_index, name="index"),
     url(r'^accounts/', include('accounts.urls')),
+    url(r'^forum/', include('forum.urls')),
 
     # Flatpages
     url(r'^pages/', include('django.contrib.flatpages.urls')),
