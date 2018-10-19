@@ -23,7 +23,7 @@ def donation(request):
                 customer = stripe.Charge.create(
                     amount=499,
                     currency="GBP",
-                    description=form.cleaned_data['email'],
+                    description=request.user.email,
                     card=form.cleaned_data['stripe_id'],
                 )
                 if customer.paid:

@@ -89,7 +89,7 @@ def new_post(request, thread_id):
     }
     args.update(csrf(request))
 
-    return render(request, 'forum/post_form.html', args)
+    return render(request, 'post_form.html', args)
 
 @login_required(login_url=reverse_lazy('login'))
 def edit_post(request, thread_id, post_id):

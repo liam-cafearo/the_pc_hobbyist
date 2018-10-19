@@ -18,7 +18,7 @@
 <section>
     <div class="col-md-9">
         <form method="post" action="{{ form_action }}">
-            {% csrf token %}
+            {% csrf_token %}
             {{ form|as_bootstrap }}
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">{{button_text}}</button>
