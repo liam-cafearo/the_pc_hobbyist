@@ -6,7 +6,7 @@
 <p>Your last login was {{user.last_login}}</p>
 <hr>
 <form role="form" method="post" action=""">
-        <legend>Update Profile</legend>
+        <legend>Update Password</legend>
         {% csrf_token %}
         {{ form | as_bootstrap }}
         <div class="form-group">

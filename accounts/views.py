@@ -35,18 +35,19 @@ def register(request):
 
     return render(request, 'register.html', args)
 
+
 from django.contrib.auth.decorators import login_required
-@login_required(login_url=reverse_lazy('login'))
-def profile(request):
-    return render(request, 'profile.html')
+
 
 @login_required(login_url=reverse_lazy('login'))
-def edit_profile(request):
-    if request.method == 'Post':
+def profile(request):
+
+    if request.method == 'POST':
         form = editProfile(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
-            messages.success(request, "You have successfully updated your profile!")
+            messages.success(
+                request, "Password Updated")
             return redirect(reverse('profile'))
     else:
         form = editProfile()
@@ -54,7 +55,6 @@ def edit_profile(request):
     args = {'form': form}
     args.update(csrf(request))
     return render(request, 'profile.html', args)
-
 
 
 def login(request):
@@ -78,6 +78,7 @@ def login(request):
     args = {'form': form}
     args.update(csrf(request))
     return render(request, 'login.html', args)
+
 
 def logout(request):
     auth.logout(request)

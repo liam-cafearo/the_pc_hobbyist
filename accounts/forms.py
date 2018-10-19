@@ -40,28 +40,37 @@ class UserRegistrationForm(UserCreationForm):
 
         return instance
 
+
 class UserLoginForm(forms.Form):
     email = forms.EmailField()
     password = forms.CharField(widget=forms.PasswordInput)
 
-class editProfile(UserRegistrationForm):
+
+class editProfile(forms.ModelForm):
+    password1 = forms.CharField(widget=forms.PasswordInput, required=False)
+    password2 = forms.CharField(widget=forms.PasswordInput, required=False)
 
     class Meta:
         model = User
-        fields = ['email', 'password1', 'password2']
-        exclude = ['username']
-    
-    def clean_email(self):
-        username = self.cleaned_data.get('username')
-        email = self.cleaned_data.get('email')
+        fields = ['password1', 'password2']
+        exclude = ['username', 'email']
 
-        if email and User.objects.filter(email=email).exclude(username=username).count():
-            raise forms.ValidationError('This email address is already in use!')
-        return email
-    
-    def save(self):
-        user = super(editProfile, self).save(commit=False)
-        user.email = self.cleaned_data['email']
-        user.save()
+    def clean_password2(self):
+        password1 = self.cleaned_data.get('password1')
+        password2 = self.cleaned_data.get('password2')
 
-        return user
+        if password1 and password2 and password1 != password2:
+            message = "Passwords do not match"
+            raise ValidationError(message)
+
+        return password2
+
+    def save(self, commit=True):
+        instance = super(editProfile, self).save(commit=False)
+
+        instance.username = instance.email
+
+        if commit:
+            instance.save()
+
+        return instance
