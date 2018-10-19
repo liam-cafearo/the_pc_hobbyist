@@ -6,13 +6,43 @@
 <script src="https://js.stripe.com/v2/" type="text/javascript"></script>
 <script type="text/javascript">
     //<![CDATA[
-        Stripe.publishablekey = '{{ publishable }}';
+    Stripe.publishablekey = '{{ publishable }}';
     //]]
 </script>
 <script type="text/javascript" src="{% static 'js/stripe.js' %}"></script>
 {% endblock %}
 
 {% block content %}
+<div>
+    <div class="container">
+        <div class="row">
+            <h1>Donations</h1>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <p>
+            The PC HOBBYIST is a free to use service and we currently 
+            do not have any plans to start charging users for the use of the 
+            site, or to cover the running costs with advertising.
+        </p>
+        <p>
+            However with all sites, it is not free to run, with you valuable
+            donations we can keep the site free for everyone. This also means
+            that in the future we may be able to implement newer features.
+        </p>
+        <p>
+            We are only asking for a small donation of £5.00 to ensure that we
+            keep the site running smoothly and without advertising. Please use
+            the form below to submit your donation.
+        </p>
+        <p>
+            All donations are appreciated, so thank you in advance and thank you
+            for supporting our site!
+        </p>
+    </div>
+</div>
 <form role="form" method="post" id="donation-form" action="{% url 'register' %}">
     <div id="credit-card-errors" style="display:none">
         <div class="alert-message block-message error" id="stripe-error-message"></div>
