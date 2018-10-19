@@ -57,11 +57,13 @@ def new_thread(request, subject_id):
 
     return render(request, 'thread_form.html', args)
 
+
 def thread(request, thread_id):
     thread_ = get_object_or_404(Thread, pk=thread_id)
     args = {'thread': thread_}
     args.update(csrf(request))
     return render(request, 'thread.html', args)
+
 
 @login_required(login_url=reverse_lazy('login'))
 def new_post(request, thread_id):
@@ -75,10 +77,11 @@ def new_post(request, thread_id):
             post.user = request.user
             post.save()
 
-            messages.success(request, "Your Post has been added to the thread!")
+            messages.success(
+                request, "Your Post has been added to the thread!")
 
             return redirect(reverse('thread', args={thread.pk}))
-    
+
     else:
         form = PostForm()
 
@@ -90,6 +93,7 @@ def new_post(request, thread_id):
     args.update(csrf(request))
 
     return render(request, 'post_form.html', args)
+
 
 @login_required(login_url=reverse_lazy('login'))
 def edit_post(request, thread_id, post_id):
@@ -105,7 +109,6 @@ def edit_post(request, thread_id, post_id):
             return redirect(reverse('thread', args={thread.pk}))
     else:
         form = PostForm(instance=post)
-    
 
     args = {
         'form': form,
@@ -115,6 +118,7 @@ def edit_post(request, thread_id, post_id):
     args.update(csrf(request))
 
     return render(request, 'post_form.html', args)
+
 
 @login_required(login_url=reverse_lazy('login'))
 def delete_post(request, thread_id, post_id):
