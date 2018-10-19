@@ -5,10 +5,10 @@ $(function() {
             number: $("#id_credit_card_number").val(),
             expMonth: $("#id_expiry_month").val(),
             expYear: $("#id_expiry_year").val(),
-            cvv: $("#id_cvv").val()
+            cvc: $("#id_cvv").val()
         };
 
-        $("#validate_card_btn").attr("disabled", true);
+        $("#donate-btn").attr("disabled", true);
         Stripe.createToken(card, function(status, response) {
             if (status === 200) {
                 console.log(status, response);
@@ -19,7 +19,7 @@ $(function() {
             } else {
                 $("stripe-error-message").text(response.error.message);
                 $("#credit-card-errors").show();
-                $("#validate_card_btn").attr("disabled", false);
+                $("#donate-btn").attr("disabled", false);
             }
         });
         return false;

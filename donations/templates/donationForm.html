@@ -3,11 +3,11 @@
 {% load staticfiles %}
 
 {% block head_js %}
-<script src="https://js.stripe.com/v2/" type="text/javascript"></script>
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 <script type="text/javascript">
     //<![CDATA[
     Stripe.publishablekey = '{{ publishable }}';
-    //]]
+    //]]>
 </script>
 <script type="text/javascript" src="{% static 'js/stripe.js' %}"></script>
 {% endblock %}
@@ -43,7 +43,7 @@
         </p>
     </div>
 </div>
-<form role="form" method="post" id="donation-form" action="{% url 'register' %}">
+<form role="form" method="post" id="donation-form" action="">
     <div id="credit-card-errors" style="display:none">
         <div class="alert-message block-message error" id="stripe-error-message"></div>
     </div>
@@ -52,7 +52,7 @@
     {% csrf_token %}
     {{ form | as_bootstrap }}
     <div class="form-group">
-        <button type="submit" class="btn btn-primary"> Create account</button>
+        <input class="btn btn-primary" type="submit" id="donate-btn" name="commit" value="Confirm Donation">
     </div>
 </form>
 {% endblock %}

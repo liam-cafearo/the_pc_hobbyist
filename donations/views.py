@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import donateForm
-from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse, reverse_lazy
 from django.template.context_processors import csrf
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
@@ -14,7 +14,7 @@ import stripe
 stripe.api_key = settings.STRIPE_SECRET
 
 
-@login_required
+@login_required(login_url=reverse_lazy('login'))
 def donation(request):
     if request.method == "POST":
         form = donateForm(request.POST)
@@ -25,7 +25,6 @@ def donation(request):
                     currency="GBP",
                     description=form.cleaned_data['email'],
                     card=form.cleaned_data['stripe_id'],
-                    statement_descriptor="PC HOBBYIST DONATION"
                 )
                 if customer.paid:
                     messages.success(request, "Thank you for your donation!")

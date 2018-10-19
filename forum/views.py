@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Subject, Thread, Post
 from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required
-from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse, reverse_lazy
 from django.template.context_processors import csrf
 
 # Create your views here.
@@ -23,7 +23,7 @@ def threads(request, subject_id):
 from .forms import ThreadForm, PostForm
 
 
-@login_required
+@login_required(login_url=reverse_lazy('login'))
 def new_thread(request, subject_id):
     subject = get_object_or_404(Subject, pk=subject_id)
     if request.method == "POST":
@@ -63,7 +63,7 @@ def thread(request, thread_id):
     args.update(csrf(request))
     return render(request, 'thread.html', args)
 
-@login_required
+@login_required(login_url=reverse_lazy('login'))
 def new_post(request, thread_id):
     thread = get_object_or_404(Thread, pk=thread_id)
 
@@ -91,7 +91,7 @@ def new_post(request, thread_id):
 
     return render(request, 'forum/post_form.html', args)
 
-@login_required
+@login_required(login_url=reverse_lazy('login'))
 def edit_post(request, thread_id, post_id):
     thread = get_object_or_404(Thread, pk=thread_id)
     post = get_object_or_404(Post, pk=post_id)
@@ -116,7 +116,7 @@ def edit_post(request, thread_id, post_id):
 
     return render(request, 'post_form.html', args)
 
-@login_required
+@login_required(login_url=reverse_lazy('login'))
 def delete_post(request, thread_id, post_id):
     post = get_object_or_404(Post, pk=post_id)
     thread_id = post.thread.id
