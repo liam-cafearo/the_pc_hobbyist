@@ -1,16 +1,19 @@
 {% extends "base.html" %}
 {% load bootstrap_tags %}
 {% block content %}
-<h2>Success!</h2>
+<h1>Profile Page</h1>
 <p>You are logged in as {{user.email}}</p>
 <p>Your last login was {{user.last_login}}</p>
 <hr>
-<form role="form" method="post" action=""">
-        <legend>Update Password</legend>
+<h2>Update Password</h2>
+<p>Use the form below to update your password.</p>
+<p>Please note that this process will log you out and ask you to sign in again.</p>
+<form role="form" method="post" action="">
         {% csrf_token %}
         {{ form | as_bootstrap }}
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary"> Update Profile</button>
-        </div>
-    </form>
+    <div class="
+    form-group">
+    <button type="submit" class="btn btn-primary"> Update Profile</button>
+    </div>
+</form>
 {% endblock %}

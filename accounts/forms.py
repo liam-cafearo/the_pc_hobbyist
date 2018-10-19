@@ -47,8 +47,8 @@ class UserLoginForm(forms.Form):
 
 
 class editProfile(forms.ModelForm):
-    password1 = forms.CharField(widget=forms.PasswordInput, required=False)
-    password2 = forms.CharField(widget=forms.PasswordInput, required=False)
+    password1 = forms.CharField(widget=forms.PasswordInput, required=True)
+    password2 = forms.CharField(widget=forms.PasswordInput, required=True)
 
     class Meta:
         model = User
@@ -64,13 +64,3 @@ class editProfile(forms.ModelForm):
             raise ValidationError(message)
 
         return password2
-
-    def save(self, commit=True):
-        instance = super(editProfile, self).save(commit=False)
-
-        instance.username = instance.email
-
-        if commit:
-            instance.save()
-
-        return instance

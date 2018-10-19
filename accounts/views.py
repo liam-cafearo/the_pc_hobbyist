@@ -45,7 +45,9 @@ def profile(request):
     if request.method == 'POST':
         form = editProfile(request.POST, instance=request.user)
         if form.is_valid():
-            form.save()
+            user = request.user
+            user.set_password(form.cleaned_data['password1'])
+            user.save()
             messages.success(
                 request, "Password Updated")
             return redirect(reverse('profile'))
