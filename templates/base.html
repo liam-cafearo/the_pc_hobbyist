@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.6/cerulean/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'css/blog.css' %}">
     <link rel="stylesheet" href="{% static 'css/fontawesome-free-5.4.1/css/fontawesome.css' %}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     {% block head_js %}{% endblock head_js %}
 </head>
 
@@ -28,6 +30,7 @@
             <div class="collapse navbar-collapse" id="collapsing-navbar">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="{% url 'index' %}">Home</a></li>
+                    <li><a href="{% url 'donate' %}">Donate</a></li>
                     <li><a href="{% url 'blog' %}">Blog</a></li>
                     <li><a href="{% url 'forum' %}">Forum</a></li>
                     <li class="dropdown">
@@ -76,9 +79,6 @@
         <p>Made by Liam Cafearo and Django</p>
     </div>
 
-    <!-- Script tags -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 
 </html>
