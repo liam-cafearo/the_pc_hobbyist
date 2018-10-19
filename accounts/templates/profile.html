@@ -1,6 +1,16 @@
 {% extends "base.html" %}
+{% load bootstrap_tags %}
 {% block content %}
 <h2>Success!</h2>
 <p>You are logged in as {{user.email}}</p>
 <p>Your last login was {{user.last_login}}</p>
+<hr>
+<form role="form" method="post" action=""">
+        <legend>Update Profile</legend>
+        {% csrf_token %}
+        {{ form | as_bootstrap }}
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary"> Update Profile</button>
+        </div>
+    </form>
 {% endblock %}

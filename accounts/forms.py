@@ -43,3 +43,25 @@ class UserRegistrationForm(UserCreationForm):
 class UserLoginForm(forms.Form):
     email = forms.EmailField()
     password = forms.CharField(widget=forms.PasswordInput)
+
+class editProfile(UserRegistrationForm):
+
+    class Meta:
+        model = User
+        fields = ['email', 'password1', 'password2']
+        exclude = ['username']
+    
+    def clean_email(self):
+        username = self.cleaned_data.get('username')
+        email = self.cleaned_data.get('email')
+
+        if email and User.objects.filter(email=email).exclude(username=username).count():
+            raise forms.ValidationError('This email address is already in use!')
+        return email
+    
+    def save(self):
+        user = super(editProfile, self).save(commit=False)
+        user.email = self.cleaned_data['email']
+        user.save()
+
+        return user
