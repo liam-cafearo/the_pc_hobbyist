@@ -18,6 +18,8 @@
     - [Technologies Used](#technologies-used)
     - [Testing](#testing)
     - [Deployment](#deployment)
+        - [Separated Online code from Offline code](#separated-online-code-from-offline-code)
+        - [Setting up Heroku](#setting-up-heroku)
     - [Credits](#credits)
 
 ## Overview
@@ -130,7 +132,32 @@ Not yet started.
 
 ## Deployment
 
-Project still in development and therefore has not been deployed.
+For this project I deployed the code to Heroku using the steps below.
+
+### Separated Online code from Offline code
+
+So to begin with I created a new settings directory at the root of the project. This directory holds 4 files:
+-  `__init__.py`: This is an empty file that informs Python that the directory should be considered a Python package.
+-  `base.py`: This file contains our base settings
+-  `dev.py`: This imports the base settings and adds settings for the development environment.
+-  `staging.py`: This imports the base settings and adds settings for the staging environment.
+
+I then went on to create the necessary requirements files placing them in a new directory called requirements. I also added a requirements.txt to the project
+for deployment to Heroku.
+
+### Setting up Heroku
+
+1. I headed over to Heroku and set up a new app called "the-pc-hobbyist". 
+2. Once that was completed I updated my `staging.py` settings to include the app url.
+3. I added gunicorn to my `requirements/base.txt`.
+4. I ran `pip install -r requirements/dev.txt` to make sure that all of the development dependencies were installed.
+5. I created a new file called Procfile and added `web: gunicorn stream3_prj.wsgi:application`.
+6. I created a runtime.txt file and added `python-2.7.15`.
+7. I then created a Procfile.local and added `web: gunicorn stream3_prj.wsgi:application`.
+8. Then I ran the following command in Bash: `export DJANGO_SETTINGS_MODULE=settings.dev`
+9. Then I ran `heroku local -f Procfile.local` to test that I could still see the website on localhost.
+
+
 
 ## Credits
 
