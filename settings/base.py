@@ -22,14 +22,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '#u+m7a-79j61#+8f505^07m=34d_3c=x7#y7$t7%)wi6o_jyej'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
-
-DISQUS_API_KEY = 'wu9qhvYBAn9nWquS1jTOxjgpb8P43gYWkmvfsHpC6lMJEIwnZkNNrIdr5nhWOZ46'
-DISQUS_WEBSITE_SHORTNAME = 'pchobbyistblog'
 SITE_ID = 4
+INTERNAL_IPS = ('127.0.0.1',)
 
 # Application definition
 
@@ -47,14 +42,13 @@ INSTALLED_APPS = [
     'django_forms_bootstrap',
     'blog',
     'disqus',
-    'debug_toolbar',
     'tinymce',
     'emoticons',
     'forum',
     'donations',
 ]
 
-INTERNAL_IPS = ('127.0.0.1',)
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -65,7 +59,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'stream3_prj.urls'
@@ -105,7 +98,6 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'accounts.backends.EmailAuth',
 )
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -156,7 +148,3 @@ MEDIA_URL = '/media/'
 
 # tinymce
 TINYMCE_JS_ROOT = os.path.join(BASE_DIR, "static", 'js', 'tinymce', 'tinymce.min.js')
-
-# Stripe environmental variables
-STRIPE_PUBLISHABLE = os.getenv('STRIPE_PUBLISHABLE', 'pk_test_J4IZwyrMGBHuK19n0wOE9bqJ')
-STRIPE_SECRET = os.getenv('STRIPE_SECRET', 'sk_test_TPPuCVTkDLuLNqhDzsmxi4AM')
