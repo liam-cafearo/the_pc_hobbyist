@@ -2,6 +2,12 @@
 {% load thread_extras %}
 {% block content %}
 {% load bootstrap_tags %}
+<div>
+    <h1>The PC Hobbyist Forum</h1>
+    <p>Click on one of the subject below to get started. A good place to start is the newbies section.</p>
+    <p><strong>Please Note:</strong> You have to be logged in to use the forum</p>
+</div>
+<hr>
 {% for subject in subjects %}
 <section class="subject">
     <h2><a href="{% url 'threads' subject.id %}">{{ subject.name }}</a></h2>
@@ -13,7 +19,7 @@
     <table>
         <tr>
             <th>THREADS</th>
-            <th>POSTS</th>
+            <th> POSTS</th>
         </tr>
         <tr>
             <td>{{ subject.threads.count }}</td>
