@@ -1,4 +1,9 @@
 {% extends "base.html" %}
+{% load staticfiles %}
+
+{% block head_js %}
+<script type="text/javascript" src="{% static 'js/blogposts.js' %}"></script>
+{% endblock %}
 
 {% block content %}
 <div>
@@ -15,7 +20,7 @@
 <div class="row">
     <hr>
     <div class="col-md-2 col-sm-3 text-center">
-        <img src="https://placehold.it/100" style="width:100px; height: 100px; background-colour: #12ABB2; color: #ffffff;"
+        <img src="/media/{{ post.image }}" onerror="alternativeImage(this);" style="width:100px; height: 100px; background-colour: #12ABB2; color: #ffffff;"
             class="img-circle">
     </div>
     <div class="col-md-10 col-sm-9">
