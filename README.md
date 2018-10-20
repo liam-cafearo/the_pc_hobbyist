@@ -20,6 +20,8 @@
     - [Deployment](#deployment)
         - [Separated Online code from Offline code](#separated-online-code-from-offline-code)
         - [Setting up Heroku](#setting-up-heroku)
+        - [Hosting the MySQL database](#hosting-the-mysql-database)
+        - [Static files](#static-files)
     - [Credits](#credits)
 
 ## Overview
@@ -156,8 +158,30 @@ for deployment to Heroku.
 7. I then created a Procfile.local and added `web: gunicorn stream3_prj.wsgi:application`.
 8. Then I ran the following command in Bash: `export DJANGO_SETTINGS_MODULE=settings.dev`
 9. Then I ran `heroku local -f Procfile.local` to test that I could still see the website on localhost.
+10. I then pushed my changes to GitHub, connected Heroku to Github as the deployment method and enbaled automatic deploys.
+11. From the command line, I logged into Heroku and ran the following commands:
+    1.  `heroku config:set DJANGO_SETTINGS_MODULE=settings.staging --app the-pc-hobbyist` to set the environment on Heroku.
+    2.  `heroku config:set DISABLE_COLLECTSTATIC=1 --app YOUR_HEROKU_APP` to prevent static collection.
+    3.  `heroku ps:scale web=1 --app YOUR_HEROKU_APP` to start my dyno.
+12. I was then able to run `heroku open --app the-pc-hobbyist` and see the project open in my browser.
 
+### Hosting the MySQL database
 
+To host he MySQL database I did the following:
+
+1. On heroku I provisioned ClearDB MySQL. Once provisioned I deleted `reconnect=true` from the `CLEARDB_DATABASE_URL` config variables.
+2. I then added `dj-database-url==0.2.1` to requirements/staging.txt and updated the settings/staging.py for my `DATABASES` setting.
+3. From the command line I then logged into Heroku and ran the following command to run migrations and generate the tables: `heroku run --app the-pc-hobbyist python manage.py migrate --settings=settings.staging`.
+4. Then to populat the database I ran this command to dump the data from the local database into a json file: `python manage.py dumpdata --natural-foreign -e contenttypes -e auth.Permission --indent=4 > db.json --settings=settings.dev`.
+5. Once that was completed I pushed the newly created `db.json` file up to GitHub and ran this command `heroku run --app the-pc-hobbyist python manage.py loaddata db.json --settings=settings.staging` to load the data into the hosted database.
+
+### Static files
+
+In order to organise my static files I carried out the following steps:
+
+1. I added `whitenoise==3.2` to requirements/base.txt and ran `pip install -r requirements/base.txt` to install it.
+2. I then altered the `wsgi.py` file to use `whitenoise`.
+3. Finally I ran the following from the command line: `heroku config:unset DISABLE_COLLECTSTATIC=1 --app the-pc-hobbyist` so that on the next build Heroku will run the `collectstatic` command.
 
 ## Credits
 
