@@ -1,1 +1,1 @@
-web: gunicorn stream3_prj.wsgi:application
+web: gunicorn stream3_prj.wsgi
