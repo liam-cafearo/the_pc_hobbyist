@@ -1,9 +1,35 @@
 {% extends "base.html" %}
 {% load staticfiles %}
+
+{% block head_js %}
+<script type="text/javascript" src="{% static 'js/contact.js' %}"></script>
+{% endblock %}
+
 {% block content %}
+<!-- modal to accompany Javascript that checks if fields are empty -->
+
+<div class="modal fade" id="emptyField" tabindex="-1" role="dialog" aria-labelledby="contactForm">
+    <div class="modal-dialog" role="document">
+        <div class="model-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="contactForm">Form Error</h4>
+            </div>
+            <div class="modal-body">
+                <p>Please fill in a fields marked with a <span style="color:red;">*</span></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- contact form -->
+
 <h2>Contact Form</h2>
 <p>Please feel free to contact us by using the form below.</p>
-<form method="post" name="contact">
+<form method="post" name="contactForm">
     {% csrf_token %}
     <div class="form-group">
         <label for="fullName">Full Name</label>
@@ -17,23 +43,6 @@
         <label for="message">Your message</label>
         <textarea name="body" class="form-control" rows="10" id="message" placeholder="Your message"></textarea>
     </div>
-    <button type="submit" class="btn btn-default">submit</button>
+    <button id="contactSubmit" type="submit" class="btn btn-default">submit</button>
 </form>
-<!-- modals to accompany Javascript that checks if fields are empty -->
-<div id="emptyField" class="modal fade" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="model-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Form Error</h4>
-            </div>
-            <div class="modal-body">
-                <p>Please fill in a fields marked with a <span style="color:red;">*</span></p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
 {% endblock%}
