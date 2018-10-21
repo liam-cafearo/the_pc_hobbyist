@@ -10,6 +10,8 @@ chardet==3.0.4
 configparser==3.5.0
 cryptography==2.3.1
 Django==1.11.16
+django-contact-form==1.6
+django-debug-toolbar==1.10.1
 django-disqus==0.5
 django-emoticons==1.2
 django-forms-bootstrap==3.1.0
@@ -17,6 +19,7 @@ django-tinymce==2.7.0
 enum34==1.1.6
 funcsigs==1.0.2
 futures==3.2.0
+gunicorn==19.9.0
 idna==2.7
 ipaddress==1.0.22
 isort==4.3.4
@@ -37,6 +40,5 @@ six==1.11.0
 sqlparse==0.2.4
 stripe==2.10.1
 urllib3==1.24
-wrapt==1.10.11
-gunicorn==19.9.0
 whitenoise==3.2
+wrapt==1.10.11
