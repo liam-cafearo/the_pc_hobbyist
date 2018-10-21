@@ -14,7 +14,9 @@
             </h1>
         </div>
         <div>
+            {% if user.is_authenticated %}
             <button class="btn btn-default" onclick="location.href='{% url 'new_post' %}'">New Post</button>
+            {% endif %}
         </div>
     </div>
 </div>

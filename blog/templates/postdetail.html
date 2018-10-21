@@ -30,10 +30,10 @@
                 {% endif %}
                 <p>{{ post.content }}</p>
                 <button class="btn btn-default" onclick="location.href='/blog'">Back to blog</button>
+                {% if user.is_authenticated %}
                 <button class="btn btn-default" onclick="location.href='{% url 'edit' post.id %}'">Edit Post</button>
+                {% endif %}
                 {% load disqus_tags %}
-                <!-- May need to remove this line -->
-                {% set_disqus_developer 1 %}
                 {% set_disqus_title post.title %}
                 {% disqus_show_comments %}
             </div>

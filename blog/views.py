@@ -7,20 +7,24 @@ from .models import Post
 from .forms import BlogPostForm
 
 # Create your views here.
+
+
 def post_list(request):
     # return blog posts published up until now
     posts = Post.objects.filter(published_date__lte=timezone.now()
-        # order by published date in descending order
-        ).order_by('-published_date')
+                                # order by published date in descending order
+                                ).order_by('-published_date')
     return render(request, "blogposts.html", {'posts': posts})
+
 
 def post_detail(request, id):
     # id passed from url dispatcher
     # pass the post model and the id primary key to post variable.
     post = get_object_or_404(Post, pk=id)
-    post.views +=1 # counter, adds 1 each time the post is viewed.
-    post.save() # update the table with the incremented value.
+    post.views += 1  # counter, adds 1 each time the post is viewed.
+    post.save()  # update the table with the incremented value.
     return render(request, "postdetail.html", {'post': post})
+
 
 def new_post(request):
     if request.method == "POST":
@@ -34,6 +38,7 @@ def new_post(request):
     else:
         form = BlogPostForm()
     return render(request, 'blogpostform.html', {'form': form})
+
 
 def edit_post(request, id):
     post = get_object_or_404(Post, pk=id)
