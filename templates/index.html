@@ -1,8 +1,21 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 {% block content %}
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus aut est assumenda ex cumque velit? Dolores
-    adipisci hic aut nemo tenetur! Id voluptates fugit blanditiis doloremque et, delectus nulla reprehenderit!</p>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis nobis, aspernatur alias voluptatem voluptate
-    corporis iure quia tenetur quas nesciunt vel voluptas tempore perferendis non, quasi est facilis. Corporis,
-    voluptate?</p>
+<div>
+    <h1>Welcome!</h1>
+</div>
+<div class="col-md-12">
+    <img src="{% static 'img/home_page.jpg' %}" alt="Inside a PC" class="img-responsive">
+</div>
+
+</div>
+
+<div>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus aut est assumenda ex cumque velit? Dolores
+        adipisci hic aut nemo tenetur! Id voluptates fugit blanditiis doloremque et, delectus nulla reprehenderit!</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis nobis, aspernatur alias voluptatem
+        voluptate
+        corporis iure quia tenetur quas nesciunt vel voluptas tempore perferendis non, quasi est facilis. Corporis,
+        voluptate?</p>
+</div>
 {% endblock %}

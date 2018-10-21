@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'emoticons',
     'forum',
     'donations',
+    'contact_form',
 ]
 
 
@@ -148,3 +149,16 @@ MEDIA_URL = '/media/'
 
 # tinymce
 TINYMCE_JS_ROOT = os.path.join(BASE_DIR, "static", 'js', 'tinymce', 'tinymce.min.js')
+
+# Contact form
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'thepchobbyist2018@gmail.com'
+EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
+
+ADMINS = (
+    ('Liam Cafearo', 'thepchobbyist2018@gmail.com'),
+)
+
+MANAGERS = ADMINS

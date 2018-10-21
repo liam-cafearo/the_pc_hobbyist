@@ -20,3 +20,4 @@ STRIPE_SECRET = os.getenv('STRIPE_SECRET', 'sk_test_TPPuCVTkDLuLNqhDzsmxi4AM')
 # Disqus
 DISQUS_API_KEY = 'wu9qhvYBAn9nWquS1jTOxjgpb8P43gYWkmvfsHpC6lMJEIwnZkNNrIdr5nhWOZ46'
 DISQUS_WEBSITE_SHORTNAME = 'pchobbyistblog'
+
