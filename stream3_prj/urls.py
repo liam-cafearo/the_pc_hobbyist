@@ -18,7 +18,6 @@ from django.conf import settings
 from django.contrib import admin
 from home import views as home_views
 from donations import views as donation_views
-from .settings import MEDIA_ROOT
 from django.views.static import serve
 
 urlpatterns = [
@@ -32,14 +31,11 @@ urlpatterns = [
     # Flatpages
     url(r'^pages/', include('django.contrib.flatpages.urls')),
 
-    # Images
-    url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
-
     # Donations
     url(r'^donations/$', donation_views.donation, name='donate'),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-# Django-Debug-Toolbar
+# Django-Debug-Toolbar  
 if settings.DEBUG:
     import debug_toolbar
     urlpatterns.append(url(r'^debug/', include(debug_toolbar.urls)))
