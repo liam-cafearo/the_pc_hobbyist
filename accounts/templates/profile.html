@@ -1,11 +1,29 @@
 {% extends "base.html" %}
-{% load bootstrap_tags %}
+{% load staticfiles %}
 {% block content %}
+{% load bootstrap_tags %}
 
-<h1>Profile Page</h1>
-<p>You are logged in as {{user.email}}</p>
-<p>You joined the site on {{user.date_joined}}</p>
-<p>Your last login was {{user.last_login}}</p>
+<div class="row">
+    <h1>Profile Page</h1>
+    <div class="col-md-2 col-sm-3 text-center">
+        {% if user.avatar %}
+        <img src="/media/{{ user.avatar }}" onerror="alternativeImage(this);" style="width:100px; height: 100px; background-color: #12ABB2; color: #ffffff;"
+            class="img-circle">
+        {% endif %}
+    </div>
+</div>
+<div class="col-md-10 col-sm-9">
+    <div class="row">
+        <div class="col-xs-9">
+            <p>You are logged in as {{user.email}}</p>
+            <p>You joined the site on {{user.date_joined}}</p>
+            <p>Your last login was {{user.last_login}}</p>
+        </div>
+    </div>
+</div>
+<button class="btn btn-primary" onclick="location.href='{% url 'new_avatar' %}'">
+    Upload New Avatar Image
+</button>
 <hr>
 <h2>Update Password</h2>
 <p>Use the form below to update your password.</p>
@@ -19,5 +37,3 @@
     </div>
 </form>
 {% endblock %}
-
-

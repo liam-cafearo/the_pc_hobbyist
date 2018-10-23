@@ -4,7 +4,7 @@ from django.contrib import messages, auth
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.shortcuts import render, redirect
 from django.template.context_processors import csrf
-from accounts.forms import UserRegistrationForm, UserLoginForm, editProfile
+from .forms import UserRegistrationForm, UserLoginForm, editProfile, avatarForm
 
 # Create your views here.
 
@@ -86,3 +86,19 @@ def logout(request):
     auth.logout(request)
     messages.success(request, 'You have successfully logged out')
     return redirect(reverse('index'))
+
+def new_avatar(request):
+    if request.method =="POST":
+        form=avatarForm(request.POST, request.FILES, instance=request.user)
+        if form.is_valid():
+            user = request.user
+            user.save()
+            messages.success(
+                request, "Avatar Updated")
+            return redirect(reverse('profile'))
+    else:
+        form = avatarForm()
+
+    args = {'form': form}
+    args.update(csrf(request))
+    return render(request, 'avatarForm.html', args)

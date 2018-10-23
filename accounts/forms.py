@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from accounts.models import User
+from .models import User
 from django.core.exceptions import ValidationError
 
 
@@ -64,3 +64,9 @@ class editProfile(forms.ModelForm):
             raise ValidationError(message)
 
         return password2
+
+class avatarForm(forms.ModelForm):
+
+    class Meta:
+        model = User
+        fields = ('avatar',)
