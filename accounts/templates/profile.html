@@ -3,27 +3,36 @@
 {% block content %}
 {% load bootstrap_tags %}
 
+{% block head_js %}
+<script type="text/javascript" src="{% static 'js/blogposts.js' %}"></script>
+{% endblock %}
+
 <div class="row">
     <h1>Profile Page</h1>
     <div class="col-md-2 col-sm-3 text-center">
         {% if user.avatar %}
-        <img src="/media/{{ user.avatar }}" onerror="alternativeImage(this);" style="width:100px; height: 100px; background-color: #12ABB2; color: #ffffff;"
+        <img src="{{ user.avatar.url }}" onerror="alternativeImage(this);" style="width:100px; height: 100px; background-color: #12ABB2; color: #ffffff;"
             class="img-circle">
         {% endif %}
     </div>
-</div>
-<div class="col-md-10 col-sm-9">
-    <div class="row">
-        <div class="col-xs-9">
-            <p>You are logged in as {{user.email}}</p>
-            <p>You joined the site on {{user.date_joined}}</p>
-            <p>Your last login was {{user.last_login}}</p>
+    <div class="col-md-10 col-sm-9">
+        <div class="row">
+            <div class="col-xs-9">
+                <p>You are logged in as {{user.email}}</p>
+                <p>You joined the site on {{user.date_joined}}</p>
+                <p>Your last login was {{user.last_login}}</p>
+            </div>
         </div>
     </div>
 </div>
-<button class="btn btn-primary" onclick="location.href='{% url 'new_avatar' %}'">
-    Upload New Avatar Image
-</button>
+<hr>
+<div>
+    <h2>Update Avatar</h2>
+    <p>If you would like to upload a new avatar image please click on the button below</p>
+    <button class="btn btn-primary" onclick="location.href='{% url 'new_avatar' %}'">
+        Upload New Avatar
+    </button>
+</div>
 <hr>
 <h2>Update Password</h2>
 <p>Use the form below to update your password.</p>
