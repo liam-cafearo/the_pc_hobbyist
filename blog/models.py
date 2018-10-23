@@ -25,5 +25,10 @@ class Post(models.Model):
         self.published_date = timezone.now()
         self.save()
 
+    @property
+    def image_url(self):
+        if self.image and hasattr(self.image, 'url'):
+            return self.image.url
+    
     def __unicode__(self):
         return self.title
