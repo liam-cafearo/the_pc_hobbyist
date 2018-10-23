@@ -29,4 +29,4 @@ class User(AbstractUser):
     stripe_id = models.CharField(max_length=40, default='')
 
     objects = AccountUserManager()
-    avatar = models.ImageField(upload_to="images", blank=True, null=True)
+    avatar = models.ImageField(upload_to="avatar_images", blank=True, null=True)
