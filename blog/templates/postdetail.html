@@ -21,7 +21,7 @@
     </div>
     <div class="col-md-10 col-sm-9">
         <h2>{{ post.title }}</h2>
-        <p>{{ post.published_date }} | <strong>Views:</strong> {{ post.views }} | <strong>Tags:</strong> {{ post.tag }}</p>
+        <p><strong>Published:</strong> {{ post.published_date }} | <strong>Author:</strong> {{ post.author }} | <strong>Views:</strong> {{ post.views }} | <strong>Tags:</strong> {{ post.tag }}</p>
         <div class="row">
             <div class="col-xs-9">
                 {% if post.image %}
@@ -29,7 +29,7 @@
                 {% endif %}
                 <p>{{ post.content }}</p>
                 <button class="btn btn-default" onclick="location.href='/blog'">Back to blog</button>
-                {% if user.is_authenticated %}
+                {% if user.is_authenticated and post.author == user or user.is_staff %}
                 <button class="btn btn-default" onclick="location.href='{% url 'edit' post.id %}'">Edit Post</button>
                 {% endif %}
                 {% load disqus_tags %}
