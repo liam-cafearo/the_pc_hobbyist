@@ -127,6 +127,10 @@ None at present
   - Used for running HTTP servers on UNIX based operating systems as Heroku uses Ubuntu Server.
 - [ClearDB MySQL](https://elements.heroku.com/addons/cleardb)
   - I used ClearDB MySql to host my database on Heroku.
+- flatpages app
+    - I used flatpages for my about page.
+- [Amazon AWS S3](https://aws.amazon.com/)
+    - I used an AWS s3 bucket to host my static files and user uploaded images as I ran into difficulties with Heroku.
 
 ## Testing
 
