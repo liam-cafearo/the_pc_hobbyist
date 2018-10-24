@@ -30,3 +30,8 @@ class User(AbstractUser):
 
     objects = AccountUserManager()
     avatar = models.ImageField(upload_to="images", blank=True, null=True)
+
+    @property
+    def avatar_url(self):
+        if self.avatar and hasattr(self.avatar, 'url'):
+            return self.avatar.url

@@ -4,14 +4,14 @@
 {% load bootstrap_tags %}
 
 {% block head_js %}
-<script type="text/javascript" src="{% static 'js/altImage.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/alternativeImage.js' %}"></script>
 {% endblock %}
 
 <div class="row">
     <h1>Profile Page</h1>
     <div class="col-md-2 col-sm-3 text-center">
         {% if user.avatar %}
-        <img src="{{ user.avatar.url }}" onerror="altImage(this);" style="width:100px; height: 100px; background-color: #12ABB2; color: #ffffff;"
+        <img src="{{ user.avatar.url }}" onerror="alternativeImage(this);" style="width:100px; height: 100px; background-color: #12ABB2; color: #ffffff;"
             class="img-circle">
         {% endif %}
     </div>
