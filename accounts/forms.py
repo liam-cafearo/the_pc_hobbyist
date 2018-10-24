@@ -19,6 +19,13 @@ class UserRegistrationForm(UserCreationForm):
         model = User
         fields = ['email', 'password1', 'password2']
         exclude = ['username']
+    
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        if User.objects.exclude(pk=self.instance.pk).filter(email=email).exists():
+            message = 'Email "%s" is already registered to a user. Please use contact us to reset your password' % email
+            raise forms.ValidationError(message)
+        return email
 
     def clean_password2(self):
         password1 = self.cleaned_data.get('password1')
