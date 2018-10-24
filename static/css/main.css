@@ -1,6 +1,22 @@
+html,
 body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
     font-family: Arial;
 }
+
+.content {
+    flex: 1 0 auto;
+}
+
+.stickyFooter {
+    flex-shrink: 0;
+}
+
 /* change the below */
 h1 a {
     color: #555555;
