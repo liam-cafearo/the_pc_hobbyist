@@ -19,7 +19,8 @@ class UserRegistrationForm(UserCreationForm):
         model = User
         fields = ['email', 'password1', 'password2']
         exclude = ['username']
-    
+
+    # Inspired by Stack Overflow post:
     def clean_email(self):
         email = self.cleaned_data['email']
         if User.objects.exclude(pk=self.instance.pk).filter(email=email).exists():
@@ -71,6 +72,7 @@ class editProfile(forms.ModelForm):
             raise ValidationError(message)
 
         return password2
+
 
 class avatarForm(forms.ModelForm):
 
