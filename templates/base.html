@@ -57,41 +57,42 @@
             </div>
         </div>
     </nav>
-    {% if messages %}
-    <div class="alert alert-success">
-        <div class="messages">
-            {% for message in messages %}
-            {{ message }}
-            {% endfor %}
+    <main class="content">
+        {% if messages %}
+        <div class="alert alert-success">
+            <div class="messages">
+                {% for message in messages %}
+                {{ message }}
+                {% endfor %}
+            </div>
         </div>
-    </div>
-    {% endif %}
+        {% endif %}
 
-    <div class="container content">
-        <div class="row">
-            <div class="col-md-12">
-                <div>
-                    {% block content %}
-                    {% endblock %}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div>
+                        {% block content %}
+                        {% endblock %}
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+        <hr>
+        <!-- image modals for index.html inspired by W3 schools -->
+        <div id="imgModal-one" class="pictureModal">
+            <span id="imgModalOne-close">&times;</span>
+            <img class="imgModal-content" id="firstImage">
+            <div id="imgModal-captionOne"></div>
+        </div>
 
-    <!-- image modals for index.html inspired by W3 schools -->
-    <div id="imgModal-one" class="pictureModal">
-        <span id="imgModalOne-close">&times;</span>
-        <img class="imgModal-content" id="firstImage">
-        <div id="imgModal-captionOne"></div>
-    </div>
-
-    <div id="imgModal-two" class="pictureModal">
-        <span id="imgModalTwo-close">&times;</span>
-        <img class="imgModal-content" id="secondImage">
-        <div id="imgModal-captionTwo"></div>
-    </div>
-    <hr>
-    <footer class="stickyFooter">
+        <div id="imgModal-two" class="pictureModal">
+            <span id="imgModalTwo-close">&times;</span>
+            <img class="imgModal-content" id="secondImage">
+            <div id="imgModal-captionTwo"></div>
+        </div>
+    </main>
+    <footer class="stickyFooter container text-center">
         <p>Made by Liam Cafearo and Django</p>
     </footer>
 

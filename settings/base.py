@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '#u+m7a-79j61#+8f505^07m=34d_3c=x7#y7$t7%)wi6o_jyej'
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = []
 SITE_ID = 4
 INTERNAL_IPS = ('127.0.0.1',)
 
@@ -51,7 +51,7 @@ INSTALLED_APPS = [
 ]
 
 
-
+INTERNAL_IPS = ('127.0.0.1',)
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

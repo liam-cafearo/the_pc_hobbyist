@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+    // Modal start
     var imgModalOne = document.getElementById('imgModal-one');
     var imgOne = document.getElementById('imgOne');
     var firstImage = document.getElementById('firstImage');
@@ -31,4 +32,7 @@ $(document).ready(function () {
     closeSpanTwo.onclick = function () {
         imgModalTwo.style.display = "none";
     }
+
+    // Model end
+
 });
