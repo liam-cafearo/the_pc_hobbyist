@@ -6,9 +6,14 @@
         <h2>{{ flatpage.title }}</h2>
     </div>
 </div>
-<div>
+<div class="col-md-6">
     <div class="text-center markerFont-paragraph">
         <p>{{ flatpage.content }}</p>
     </div>
 </div>
+<figure class="col-md-6">
+    <img class="img-rounded img-responsive" src="https://thepchobbyist.s3.amazonaws.com/static/img/computer_setup_one.jpg"
+        alt="computer with two monitors">
+    <figcaption class="text-center">My latest computer setup.</figcaption>
+</figure>
 {% endblock %}
