@@ -57,6 +57,8 @@
         - [Hosting the MySQL database](#hosting-the-mysql-database)
         - [Static files](#static-files)
     - [Credits](#credits)
+        - [Content](#content)
+        - [Acknowledgements](#acknowledgements)
 
 ## Overview
 
@@ -387,4 +389,18 @@ In order to organise my static files I carried out the following steps:
 
 ## Credits
 
-None at present.
+### Content
+
+- The font was provided by [Google fonts](https://fonts.google.com/) and can be found [here](https://fonts.google.com/specimen/Press+Start+2P).
+- All the icons were provided by [Font Awesome](https://fontawesome.com/).
+
+### Acknowledgements
+
+In my acknowledgements no code was copied from these sources and all code was written by me. These are a mention of people/websites that provided me with guidance and I was able to adapt the knowledge of their lessons into my own code.
+
+- [Code Institute](https://www.codeinstitute.net/) and my Mentor for providing me the skills, inspiration and direction to build this Dashboard.
+- Code Institute students - They were very helpful at pointing me in the right direction when I couldn't get something working. All code is my own.
+- [Dan Poirier's AWS guide](https://www.caktusgroup.com/blog/2014/11/10/Using-Amazon-S3-to-store-your-Django-sites-static-and-media-files/) - This was instrumental in getting AWS to work.
+- [This](https://stackoverflow.com/questions/22567320/django-edit-user-profile) Stack Overflow post for guiding me in the right direction for the password reset form again no code was copied.
+- [This](https://stackoverflow.com/questions/28504753/html5-img-tag-alternative-image#28504867) Stack Overflow post for inspiring me on to setup an alternative image function.
+- [This](https://stackoverflow.com/questions/20010108/checking-if-username-exists-in-django) Stack Overflow post for inspiring me on how to check if a username exists in my current database.
