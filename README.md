@@ -48,9 +48,6 @@
         - [Scenario Ten: User can't access donations if not authenticated](#scenario-ten-user-cant-access-donations-if-not-authenticated)
             - [Scenario Steps](#scenario-steps)
             - [Desired Outcomes](#desired-outcomes)
-        - [Scenario Ten: User can't access donations if not authenticated](#scenario-ten-user-cant-access-donations-if-not-authenticated)
-            - [Scenario Steps](#scenario-steps)
-            - [Desired Outcomes](#desired-outcomes)
     - [Deployment](#deployment)
         - [Separated Online code from Offline code](#separated-online-code-from-offline-code)
         - [Setting up Heroku](#setting-up-heroku)
@@ -322,18 +319,6 @@ If successful the user should be logged out.
 #### Desired Outcomes
 
 If successful the user should be redirected to the login page.
-
-### Scenario Ten: User can't access donations if not authenticated
-
-#### Scenario Steps
-
-1. Whilst logged out of the site user selects "Donate" from the Navigation Bar.
-2. User is redirected to the login page.
-
-#### Desired Outcomes
-
-If successful the user should be redirected to the login page.
-
 
 ## Deployment
 
