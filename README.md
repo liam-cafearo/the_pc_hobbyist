@@ -15,8 +15,42 @@
     - [Features](#features)
         - [Existing Features](#existing-features)
         - [Features left to implement](#features-left-to-implement)
+        - [Known Issues](#known-issues)
     - [Technologies Used](#technologies-used)
     - [Testing](#testing)
+        - [Scenario One: User Registration](#scenario-one-user-registration)
+            - [Scenario Steps](#scenario-steps)
+            - [Desired Outcomes](#desired-outcomes)
+        - [Scenario Two: User changes Avatar](#scenario-two-user-changes-avatar)
+            - [Scenario Steps](#scenario-steps)
+            - [Desired Outcomes](#desired-outcomes)
+        - [Scenario Three: User changes password](#scenario-three-user-changes-password)
+            - [Scenario Steps](#scenario-steps)
+            - [Desired Outcomes](#desired-outcomes)
+        - [Scenario Four: User Donation](#scenario-four-user-donation)
+            - [Scenario Steps](#scenario-steps)
+            - [Desired Outcomes](#desired-outcomes)
+        - [Scenario Five: Blog](#scenario-five-blog)
+            - [Scenario Steps](#scenario-steps)
+            - [Desired Outcomes](#desired-outcomes)
+        - [Scenario Six: Forum](#scenario-six-forum)
+            - [Scenario Steps](#scenario-steps)
+            - [Desired Outcomes](#desired-outcomes)
+        - [Scenario Seven: About Page](#scenario-seven-about-page)
+            - [Scenario Steps](#scenario-steps)
+            - [Desired Outcomes](#desired-outcomes)
+        - [Scenario Eight: Contact Form](#scenario-eight-contact-form)
+            - [Scenario Steps](#scenario-steps)
+            - [Desired Outcomes](#desired-outcomes)
+        - [Scenario Nine: Logging Out](#scenario-nine-logging-out)
+            - [Scenario Steps](#scenario-steps)
+            - [Desired Outcomes](#desired-outcomes)
+        - [Scenario Ten: User can't access donations if not authenticated](#scenario-ten-user-cant-access-donations-if-not-authenticated)
+            - [Scenario Steps](#scenario-steps)
+            - [Desired Outcomes](#desired-outcomes)
+        - [Scenario Ten: User can't access donations if not authenticated](#scenario-ten-user-cant-access-donations-if-not-authenticated)
+            - [Scenario Steps](#scenario-steps)
+            - [Desired Outcomes](#desired-outcomes)
     - [Deployment](#deployment)
         - [Separated Online code from Offline code](#separated-online-code-from-offline-code)
         - [Setting up Heroku](#setting-up-heroku)
@@ -94,10 +128,6 @@ I also created some mockups of the site which can be viewed in the folder named 
 
 ### Existing Features
 
-None at present
-
-### Features left to implement
-
 - Authentication mechanism.
 - E-commerce functionality
 - SQL database connection using Django's ORM
@@ -105,6 +135,19 @@ None at present
 - Disqus Integration
 - Blog functionality
 - Forum functionality
+
+### Features left to implement
+
+- None
+
+### Known Issues
+
+As per the guidelines I used Disqus to integrate comments into the blog, however even though as you will see it is setup correctly in my settings
+Disqus has an issue loading. I tried a number of troubleshooting guidelies however none seemed to work, such as added the website URL to the trusted domains.
+
+I therefore contacted Tutor support and spoke to Nakita who advised that Disqus is know to have issues and experienced herself it working for one user
+and not another. Nakita also advised that this is why it has been taken out of the new LMS.
+
 
 ## Technologies Used
 
@@ -115,6 +158,7 @@ None at present
 - [Bootstrap](https://getbootstrap.com)
   - I have used bootstrap to give my website a clean and responsive layout.
 - JavaScript
+  - I have used JavaScript to enhance the users interaction with the website.
 - [Django](https://www.djangoproject.com/)
   - I have used the Django framework to build this website as using a framework provides several advantages such as:
     - Frameworks reduce time and effort acquired from common and repetitive tasks.
@@ -127,14 +171,167 @@ None at present
   - Used for running HTTP servers on UNIX based operating systems as Heroku uses Ubuntu Server.
 - [ClearDB MySQL](https://elements.heroku.com/addons/cleardb)
   - I used ClearDB MySql to host my database on Heroku.
-- flatpages app
-    - I used flatpages for my about page.
+- django-flatpages app
+  - I used flatpages for my about page.
 - [Amazon AWS S3](https://aws.amazon.com/)
-    - I used an AWS s3 bucket to host my static files and user uploaded images as I ran into difficulties with Heroku.
+  - I used an AWS s3 bucket to host my static files and user uploaded images as I ran into difficulties with Heroku.
+- [Disqus API](https://disqus.com/)
+  - I used disqus for the blog comments.
+- [Stripe](https://stripe.com/gb)
+  - I used Stripe so that users can make donations to the website. This is only setup however to take test payments so please use one of
+    test cards found [here](https://stripe.com/docs/testing#cards).
+- [django-contact-form](https://django-contact-form.readthedocs.io/en/latest/index.html)
+  - I used this so that users are able to send me an email using a contact form.
+- [django-tinymce](https://django-tinymce.readthedocs.io/en/latest/)
+  - I used this module to enhance the textareas of the forum
+- [django-emoticons](https://pypi.org/project/django-emoticons/)
+  - I used this so that when a user types a smiley face they will be presented with an emoticon.
+- [django-forms-bootstrap](https://pypi.org/project/django-forms-bootstrap/)
+  - I used this module to provide better looking forms on the site.
+- [django-debug-toolbar](https://django-debug-toolbar.readthedocs.io/en/latest/)
+  - I used this during development to aid in debugging.
 
 ## Testing
 
-Not yet started.
+For the dashboard I haven't automated any tests however I carried out scenario based tests to ensure that the site works as user may expect it to. The scenarios are listed below:
+
+### Scenario One: User Registration
+
+#### Scenario Steps
+
+1. From the home page, click register
+2. fill in the form and press "create account"
+3. user should then be redirected to their profile page.
+
+#### Desired Outcomes
+
+If successful the user should be able to register and be redirected to their user profile.
+
+### Scenario Two: User changes Avatar
+
+#### Scenario Steps
+
+1. From their profile page, user clicks on upload new avatar
+2. User will then be presented with an upload field.
+3. User selects new image and selects "upload new image" button.
+4. User is then redirected back to profile page with new avatar displayed.
+
+#### Desired Outcomes
+
+If successful the user should be able to upload a new avatar and be redirected to their home page.
+
+### Scenario Three: User changes password
+
+#### Scenario Steps
+
+1. From their profile page, user fills in "Update Password" form and selects "Update Password" button.
+2. User will then be asked to re-authenticate their credentials.
+3. User is then redirected back to their profile.
+
+#### Desired Outcomes
+
+If successful the user should be able to reset their password.
+
+### Scenario Four: User Donation
+
+#### Scenario Steps
+
+1. User clicks on Donate button from navigation bar.
+2. User fills in form using the [stripe test details](https://stripe.com/docs/testing#cards) and presses confirm donation.
+3. User is taken back to their profile page.
+
+#### Desired Outcomes
+
+If successful the user should be able to make a donation.
+
+### Scenario Five: Blog
+
+#### Scenario Steps
+
+1. User clicks on Blog button from navigation bar.
+2. Use is presented with blog posts from other users.
+3. User should not be able to see their profile picture next to the blog posts if they are not the author.
+4. User clicks on "Read more" button and should be taken to post detail. If they are not the author they should not be able to edit the post.
+5. User clicks back to blog, once there clicks on "New post".
+6. User should be able to fill in new form, upload a picture, set a tag and then after pressing "Save" be taken to the post they just created.
+7. As this is their post they should also be able to edit the post.
+
+#### Desired Outcomes
+
+If successful the user should be able to carry out the actions above without any errors.
+
+### Scenario Six: Forum
+
+#### Scenario Steps
+
+1. User clicks on Forum button from navigation bar.
+2. Use is presented with forum subject along with the number of threads and posts in each subject.
+3. If a user clicks on subject they should be taken to a page where they can see a subjects threads.
+4. If they select a thread they will be taken to a "posts page" where they should be able to see details about the thread and any comments.
+5. They should be able to click "New post" and submit a comment.
+6. They will then be redirected to the "Posts" page and they should be able to only edit or delete their own comments.
+
+#### Desired Outcomes
+
+If successful the user should be able to carry out the actions above without any errors.
+
+### Scenario Seven: About Page
+
+#### Scenario Steps
+
+1. User clicks on About button from navigation bar.
+2. User can see the about page.
+
+#### Desired Outcomes
+
+If successful the user should be able to see the about page.
+
+### Scenario Eight: Contact Form
+
+#### Scenario Steps
+
+1. User clicks on the Contact button from the navigation bar.
+2. User is presented with a contact form.
+3. If the user clicks submit they should be asked to fill in forms marked with a red asterisks.
+4. If the user fills in the form they should be presented with a success message.
+
+#### Desired Outcomes
+
+If successful the user should be able to carry out the actions above without any errors and I should receive an email.
+
+### Scenario Nine: Logging Out
+
+#### Scenario Steps
+
+1. User clicks on profile > logout from the navigation bar.
+2. User is taken to the home page with a success message that they are logged out.
+
+#### Desired Outcomes
+
+If successful the user should be logged out.
+
+### Scenario Ten: User can't access donations if not authenticated
+
+#### Scenario Steps
+
+1. Whilst logged out of the site user selects "Donate" from the Navigation Bar.
+2. User is redirected to the login page.
+
+#### Desired Outcomes
+
+If successful the user should be redirected to the login page.
+
+### Scenario Ten: User can't access donations if not authenticated
+
+#### Scenario Steps
+
+1. Whilst logged out of the site user selects "Donate" from the Navigation Bar.
+2. User is redirected to the login page.
+
+#### Desired Outcomes
+
+If successful the user should be redirected to the login page.
+
 
 ## Deployment
 
@@ -143,17 +340,18 @@ For this project I deployed the code to Heroku using the steps below.
 ### Separated Online code from Offline code
 
 So to begin with I created a new settings directory at the root of the project. This directory holds 4 files:
--  `__init__.py`: This is an empty file that informs Python that the directory should be considered a Python package.
--  `base.py`: This file contains our base settings
--  `dev.py`: This imports the base settings and adds settings for the development environment.
--  `staging.py`: This imports the base settings and adds settings for the staging environment.
+
+- `__init__.py`: This is an empty file that informs Python that the directory should be considered a Python package.
+- `base.py`: This file contains our base settings
+- `dev.py`: This imports the base settings and adds settings for the development environment.
+- `staging.py`: This imports the base settings and adds settings for the staging environment.
 
 I then went on to create the necessary requirements files placing them in a new directory called requirements. I also added a requirements.txt to the project
 for deployment to Heroku.
 
 ### Setting up Heroku
 
-1. I headed over to Heroku and set up a new app called "the-pc-hobbyist". 
+1. I headed over to Heroku and set up a new app called "the-pc-hobbyist".
 2. Once that was completed I updated my `staging.py` settings to include the app url.
 3. I added gunicorn to my `requirements/base.txt`.
 4. I ran `pip install -r requirements/dev.txt` to make sure that all of the development dependencies were installed.
@@ -164,9 +362,9 @@ for deployment to Heroku.
 9. Then I ran `heroku local -f Procfile.local` to test that I could still see the website on localhost.
 10. I then pushed my changes to GitHub, connected Heroku to Github as the deployment method and enbaled automatic deploys.
 11. From the command line, I logged into Heroku and ran the following commands:
-    1.  `heroku config:set DJANGO_SETTINGS_MODULE=settings.staging --app the-pc-hobbyist` to set the environment on Heroku.
-    2.  `heroku config:set DISABLE_COLLECTSTATIC=1 --app YOUR_HEROKU_APP` to prevent static collection.
-    3.  `heroku ps:scale web=1 --app YOUR_HEROKU_APP` to start my dyno.
+    1. `heroku config:set DJANGO_SETTINGS_MODULE=settings.staging --app the-pc-hobbyist` to set the environment on Heroku.
+    2. `heroku config:set DISABLE_COLLECTSTATIC=1 --app YOUR_HEROKU_APP` to prevent static collection.
+    3. `heroku ps:scale web=1 --app YOUR_HEROKU_APP` to start my dyno.
 12. I was then able to run `heroku open --app the-pc-hobbyist` and see the project open in my browser.
 
 ### Hosting the MySQL database

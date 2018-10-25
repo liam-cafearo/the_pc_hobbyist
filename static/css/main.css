@@ -37,7 +37,8 @@ h4,
 label,
 th,
 button,
-footer {
+footer,
+nav {
   font-family: 'Permanent Marker', cursive;
 }
 
@@ -45,8 +46,15 @@ footer {
   font-family: 'Permanent Marker', cursive;
 }
 
+#blogImg {
+  max-height: 300px;
+  margin-right: auto;
+  margin-left: auto;
+}
 
-
+.container .jumbotron, .container-fluid .jumbotron {
+  background-color: darkturquoise;
+}
 
 /* File upload field fix */
 

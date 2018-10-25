@@ -13,46 +13,43 @@
 {% endblock %}
 
 {% block content %}
+<div class="jumbotron text-center">
+    <h1>Donations</h1>
+    <p class="markerFont"> PLease use the form below to make a donation.</p>
+</div>
 <div>
-    <div class="container">
-        <div class="row">
-            <h1>Donations</h1>
+    <p>
+        The PC Hobbyist is a free to use service and we currently
+        do not have any plans to start charging users for the use of the
+        site, or to cover the running costs with advertising.
+    </p>
+    <p>
+        However with all sites, it is not free to run, with you valuable
+        donations we can keep the site free for everyone. This also means
+        that in the future we may be able to implement newer features.
+    </p>
+    <p>
+        We are only asking for a small donation of £5.00 to ensure that we
+        keep the site running smoothly and without advertising. Please use
+        the form below to submit your donation.
+    </p>
+    <p>
+        All donations are appreciated, so thank you in advance and thank you
+        for supporting our site!
+    </p>
+</div>
+<div>
+    <form role="form" method="post" id="donation-form" action="">
+        <div id="credit-card-errors">
+            <div class="alert-message block-message error" id="stripe-error-message"></div>
         </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-12">
-        <p>
-            The PC Hobbyist is a free to use service and we currently 
-            do not have any plans to start charging users for the use of the 
-            site, or to cover the running costs with advertising.
-        </p>
-        <p>
-            However with all sites, it is not free to run, with you valuable
-            donations we can keep the site free for everyone. This also means
-            that in the future we may be able to implement newer features.
-        </p>
-        <p>
-            We are only asking for a small donation of £5.00 to ensure that we
-            keep the site running smoothly and without advertising. Please use
-            the form below to submit your donation.
-        </p>
-        <p>
-            All donations are appreciated, so thank you in advance and thank you
-            for supporting our site!
-        </p>
-    </div>
-</div>
-<form role="form" method="post" id="donation-form" action="">
-    <div id="credit-card-errors">
-        <div class="alert-message block-message error" id="stripe-error-message"></div>
-    </div>
 
-    <legend>Your Donation</legend>
-    {% csrf_token %}
-    {{ form | as_bootstrap }}
-    <div class="form-group">
-        <input class="btn btn-primary" type="submit" id="donate-btn" name="commit" value="Confirm Donation">
-    </div>
-</form>
+        <legend>Your Donation</legend>
+        {% csrf_token %}
+        {{ form | as_bootstrap }}
+        <div class="form-group">
+            <input id="buttonStyle" class="btn btn-primary" type="submit" id="donate-btn" name="commit" value="Confirm Donation">
+        </div>
+    </form>
+</div>
 {% endblock %}

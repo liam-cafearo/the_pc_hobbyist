@@ -25,10 +25,10 @@
         <div class="row">
             <div class="col-xs-9">
                 {% if post.image %}
-                <img src="{{ post.image_url }}" class="img-responsive">
+                <img id="blogImg" src="{{ post.image_url }}" class="img-responsive">
                 {% endif %}
                 <p>{{ post.content }}</p>
-                <button class="btn btn-default" onclick="location.href='/blog'">Back to blog</button>
+                <button class="btn btn-primary" onclick="location.href='/blog'">Back to blog</button>
                 {% if user.is_authenticated and post.author == user or user.is_staff %}
                 <button class="btn btn-primary" onclick="location.href='{% url 'edit' post.id %}'">Edit Post</button>
                 {% endif %}
