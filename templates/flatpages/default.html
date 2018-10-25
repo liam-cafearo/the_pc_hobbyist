@@ -1,16 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="text-center">
-                <h2>{{ flatpage.title }}</h2>
-            </div>
-            <div>
-                {{ flatpage.content }}
-            </div>
-        </div>
+<div class="jumbotron">
+    <div class="text-center">
+        <h2>{{ flatpage.title }}</h2>
+    </div>
+</div>
+<div>
+    <div class="text-center markerFont-paragraph">
+        <p>{{ flatpage.content }}</p>
     </div>
 </div>
 {% endblock %}

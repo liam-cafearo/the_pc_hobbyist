@@ -1,5 +1,5 @@
 body {
-  min-height: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   font-family: monospace;
@@ -27,13 +27,25 @@ body {
   font-size: 21px;
 }
 
-body {
+.markerFont {
   font-family: 'Permanent Marker', cursive;
 }
 
-blogStats {
-  font-family: monospace;
+h1,
+h2,
+h4,
+label,
+th
+button {
+  font-family: 'Permanent Marker', cursive;
 }
+
+#buttonStyle {
+  font-family: 'Permanent Marker', cursive;
+}
+
+
+
 
 /* File upload field fix */
 

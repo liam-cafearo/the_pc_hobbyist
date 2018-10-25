@@ -7,39 +7,39 @@
 <script type="text/javascript" src="{% static 'js/alternativeImage.js' %}"></script>
 {% endblock %}
 
-<div class="row">
-    <h1>Profile Page</h1>
-    <div class="col-md-2 col-sm-3 text-center">
-        <img src="{{ user.avatar_url }}" onerror="alternativeImage(this);" class="img-circle avatar-image">
-    </div>
-    <div class="col-md-10 col-sm-9">
-        <div class="row">
-            <div class="col-xs-9">
-                <p>You are logged in as {{user.email}}</p>
-                <p>You joined the site on {{user.date_joined}}</p>
-                <p>Your last login was {{user.last_login}}</p>
-            </div>
+<div class="jumbotron text-center">
+    <h1>Your Profile</h1>
+</div>
+<div class="col-md-2 col-sm-3 text-center">
+    <img src="{{ user.avatar_url }}" onerror="alternativeImage(this);" class="img-circle avatar-image">
+</div>
+<div class="col-md-10 col-sm-9">
+    <div class="row">
+        <div class="col-xs-9">
+            <p>You are logged in as {{user.email}}</p>
+            <p>You joined the site on {{user.date_joined}}</p>
+            <p>Your last login was {{user.last_login}}</p>
         </div>
     </div>
 </div>
-<hr>
-<div>
+<div class="col-md-12">
     <h2>Update Avatar</h2>
     <p>If you would like to upload a new avatar image please click on the button below</p>
     <button class="btn btn-primary" onclick="location.href='{% url 'new_avatar' %}'">
         Upload New Avatar
     </button>
 </div>
-<hr>
-<h2>Update Password</h2>
-<p>Use the form below to update your password.</p>
-<p>Please note that this process will log you out and ask you to sign in again.</p>
+<div class="col-md-12">
+    <h2>Update Password</h2>
+    <p>Use the form below to update your password.</p>
+    <p>Please note that this process will log you out and ask you to sign in again.</p>
 
-<form role="form" method="post" action="">
-    {% csrf_token %}
-    {{ form | as_bootstrap }}
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary"> Update Profile</button>
-    </div>
-</form>
+    <form role="form" method="post" action="">
+        {% csrf_token %}
+        {{ form | as_bootstrap }}
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary"> Update Profile</button>
+        </div>
+    </form>
+</div>
 {% endblock %}

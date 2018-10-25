@@ -2,30 +2,34 @@
 {% load thread_extras %}
 {% block content %}
 {% load bootstrap_tags %}
-<div>
+<div class="jumbotron text-center markerFont">
     <h1>The PC Hobbyist Forum</h1>
     <p>Click on one of the subject below to get started. A good place to start is the newbies section.</p>
     <p><strong>Please Note:</strong> You have to be logged in to use the forum</p>
 </div>
 <hr>
 {% for subject in subjects %}
-<section class="subject">
-    <h2><a href="{% url 'threads' subject.id %}">{{ subject.name }}</a></h2>
-    <p>
-        <a href="{% url 'threads' subject.id %}">
-            {% autoescape off %}{{ subject.description }}{% endautoescape %}
-        </a>
-    </p>
-    <table>
-        <tr>
-            <th>THREADS</th>
-            <th> POSTS</th>
-        </tr>
-        <tr>
-            <td>{{ subject.threads.count }}</td>
-            <td>{{ subject|get_total_subject_posts }}</td>
-        </tr>
-    </table>
+<section>
+    <div>
+        <h2><a href="{% url 'threads' subject.id %}">{{ subject.name }}</a></h2>
+        <p>
+            <a href="{% url 'threads' subject.id %}">
+                {% autoescape off %}{{ subject.description }}{% endautoescape %}
+            </a>
+        </p>
+    </div>
+    <div>
+        <table class="table">
+            <tr>
+                <th>THREADS</th>
+                <th> POSTS</th>
+            </tr>
+            <tr>
+                <td>{{ subject.threads.count }}</td>
+                <td>{{ subject|get_total_subject_posts }}</td>
+            </tr>
+        </table>
+    </div>
 </section>
 {% endfor %}
 {% endblock %}
